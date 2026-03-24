@@ -170,11 +170,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public User getById(Long userId) {
-        return userMapper.selectById(userId);
-    }
-
-    @Override
     public void updateStorageUsed(Long userId, Long delta) {
         userMapper.updateStorageUsed(userId, delta);
     }

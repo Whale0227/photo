@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "minio")
 public class MinioProperties {
 
-    /** MinIO 服务地址，如 http://localhost:9000 */
+    /** MinIO 服务地址，如 http://192.168.147.128:9000 */
     private String endpoint;
 
     /** 访问密钥 */

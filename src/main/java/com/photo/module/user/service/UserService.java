@@ -1,5 +1,6 @@
 package com.photo.module.user.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.photo.module.user.dto.LoginDTO;
 import com.photo.module.user.dto.RegisterDTO;
 import com.photo.module.user.dto.UpdatePasswordDTO;
@@ -11,7 +12,7 @@ import com.photo.module.user.vo.UserVO;
 /**
  * 用户 Service 接口
  */
-public interface UserService {
+public interface UserService extends IService<User> {
 
     /** 注册 */
     void register(RegisterDTO dto);
@@ -30,9 +31,6 @@ public interface UserService {
 
     /** 修改密码 */
     void updatePassword(UpdatePasswordDTO dto);
-
-    /** 根据ID获取用户（内部使用） */
-    User getById(Long userId);
 
     /** 更新已用存储空间 */
     void updateStorageUsed(Long userId, Long delta);

@@ -1,3 +1,55 @@
 spring:
   application:
     name: photo
+
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/photo_manager?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+
+  # 文件上传大小限制
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+  # Jackson 全局配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null   # 响应中忽略 null 字段
+
+# 服务端口
+server:
+  port: 8080
+
+# MinIO 配置
+minio:
+  endpoint: http://localhost:9000    # MinIO 服务地址（Linux服务器改为对应IP）
+  access-key: admin
+  secret-key: admin123
+  bucket-name: photos
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.photo.module.*.entity
+  configuration:
+    map-underscore-to-camel-case: true   # 下划线转驼峰
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 开发环境打印SQL（生产环境删掉）
+  global-config:
+    db-config:
+      id-type: auto            # 主键自增
+      logic-delete-field: deleted   # 逻辑删除字段名
+      logic-delete-value: 1         # 已删除
+      logic-not-delete-value: 0     # 未删除
+
+# 日志配置
+logging:
+  level:
+    com.photo: debug           # 项目包打印 debug 日志
+    io.minio: warn             # MinIO 日志只打印警告
+  pattern:
+    console: "%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

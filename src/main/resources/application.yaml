@@ -27,7 +27,7 @@ server:
 
 # MinIO 配置
 minio:
-  endpoint: http://localhost:9000    # MinIO 服务地址（Linux服务器改为对应IP）
+  endpoint: http://192.168.147.128:9001    # MinIO 服务地址（Linux服务器改为对应IP）
   access-key: admin
   secret-key: admin123
   bucket-name: photos
@@ -45,6 +45,16 @@ mybatis-plus:
       logic-delete-field: deleted   # 逻辑删除字段名
       logic-delete-value: 1         # 已删除
       logic-not-delete-value: 0     # 未删除
+
+# Sa-Token 配置
+sa-token:
+  token-name: Authorization      # 请求头字段名
+  timeout: 2592000               # token 有效期（秒）：30天
+  active-timeout: -1             # 活跃有效期（-1不启用）
+  is-concurrent: false           # 同一账号禁止多地登录
+  is-share: true
+  token-style: uuid              # token 风格
+  is-log: false
 
 # 日志配置
 logging:

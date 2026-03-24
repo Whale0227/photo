@@ -28,7 +28,7 @@ public class UserController {
     @Operation(summary = "用户注册")
     @PostMapping("/register")
     public R<Void> register(@Valid @RequestBody RegisterDTO dto) {
-        userService.register(dto);
+        //userService.register(dto);
         return R.ok("注册成功", null);
     }
 

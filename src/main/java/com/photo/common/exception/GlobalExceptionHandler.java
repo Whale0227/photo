@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,6 +51,14 @@ public class GlobalExceptionHandler {
     public R<Void> handleMaxUploadSizeExceeded(MaxUploadSizeExceededException e) {
         log.warn("文件大小超出限制: {}", e.getMessage());
         return R.fail(ResultCode.FILE_SIZE_EXCEED);
+    }
+
+    /**
+     * 静态资源不存在（如 favicon.ico），直接忽略，不打印错误日志
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public R<Void> handleNoResourceFound(NoResourceFoundException e) {
+        return R.fail(404, e.getMessage());
     }
 
     /**

@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.12</version>
+        <version>3.3.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com</groupId>
@@ -84,11 +84,11 @@
             <artifactId>spring-security-crypto</artifactId>
         </dependency>
 
-        <!-- Knife4j（接口文档） -->
+        <!-- Knife4j（接口文档），内部已包含 springdoc，勿单独引入 springdoc -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>4.4.0</version>
+            <version>4.5.0</version>
         </dependency>
 
         <!-- Thumbnailator（缩略图生成） -->

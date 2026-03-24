@@ -63,3 +63,9 @@ logging:
     io.minio: warn             # MinIO 日志只打印警告
   pattern:
     console: "%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Knife4j 接口文档配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
